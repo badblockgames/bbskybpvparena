@@ -1,0 +1,72 @@
+#PLAYERUN donne le nom du joueur 1 ; PAYERDEUX idem pour player 2 ; WINNER idem pour le gagnant du combat ; LOOSER idem pour le perdant du combat
+#BC est un broadcast
+permissions:
+  admin: 'BadblockSkyBPvpArenaAdminUse'
+  autres: 'BadblockSkyBPvpArenaUse'
+SpawnAreas:
+  '1':
+    world: default
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  '2':
+    world: default
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  SignTPPlace:
+    world: default
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  Spawn:
+    world: default
+    x: 0
+    y: 0
+    z: 0
+texts:
+  newGameBC: 'newGameBC' #PLAYERUN dispo
+  textCliquableBC: 'textCliquableBC'
+  unVSunStartBC: 'unVSunStart' #PLAYERUN et PLAYERDEUX dispo
+  victoryBC: 'victoryBC' #WINNER et LOOSER dispo 
+  betCancelled: 'betCancelled'
+  betCancelledBC: 'betCancelledBC' #PLAYERUN dispo
+  pariEnCours: 'pariEnCours'
+  confirmCancelled:  'confirmCancelled'
+  gameUnavailable: 'gameUnavailable'
+  insufficientMaterials: 'insufficientMaterials'
+  Erreur:
+    etat: 'Erreur d''etat'
+sign:
+  lines:
+  - ''
+  - ''
+  - ''
+  - ''
+  BlockLoc:
+    world: default
+    x: 0
+    y: 0
+    z: 0
+bet:
+  allowedItems:
+  - DIAMOND_BLOCK
+  - DIAMOND_ORE
+  - EMERALD_BLOCK
+  - EMERALD_ORE
+  - GOLD_BLOCK
+  - EMERALD_ORE
+  - REDSTONE_BLOCK
+  - REDSTONE_ORE
+whiteListConfig:
+- 'hub'
+- 'spawn'
+- 'is go'
+- 'is h'
+- 'arene sign'

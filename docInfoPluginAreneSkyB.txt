@@ -1,0 +1,96 @@
+Arène PVP SkyBlock
+
+Le Jeu :
+	Les joueurs du skyblock peuvent parier des items(config) pour combatre dans l'arene, s'il gagnent le combat, ils remporte leur mise.
+Exemple : un joueur parie 45Blocks d'émeraude, un autre joueur accepte le parie (il parie donc lui aussi 45Blocks d'émeraude), le gagnat du combat remporte 90Blocks d'émeraude.
+
+La config :
+permissions:
+  admin: '' permissions donnant divers acces admin
+  autres: '' permissions pour utiliser les fonctions du plugin
+SpawnAreas:
+  '1':
+    world: '' le nom de la map
+    x: 0	
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  '2':
+    world: '' le nom de la map
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  SignTPPlace:
+    world: '' le nom de la map
+    x: 0
+    y: 0
+    z: 0
+  Spawn:
+    world: '' le nom de la map
+    x: 0
+    y: 0
+    z: 0
+texts:
+  newGameBC: 'newGameBC' #PLAYERUN dispo
+	BroadCast quand quelqu'un vient de lancer un pari
+  textCliquableBC: 'textCliquableBC' #PLAYERUN dispo
+	BroadCast clicable pour se TP devant le panneau
+  textCliquableInfoBC: 'textCliquableInfoBC' #PLAYERUN dispo
+	info quand on passe la sourie sur le text clicable
+  unVSunStartBC: 'unVSunStart' #PLAYERUN et PLAYERDEUX dispo
+	BroadCast un combat commence
+  victoryBC: 'victoryBC' #WINNER et LOOSER dispo 
+	BroadCast de fin de partie
+  betCancelled: 'betCancelled' 
+	text envoyé au playerUn quand il annule son pari
+  betCancelledBC: 'betCancelledBC' #PLAYERUN dispo
+	BroadCast text envoyé au playerUn quand il annule son pari
+  pariEnCours: 'pariEnCours'  #PLAYERUN et PLAYERDEUX dispo
+	text envoyé au joueur clickant sur le panneau pour parier quand un pari est en cours
+  confirmCancelled:  'confirmCancelled'
+	text envoyé au PLAYERDEUX quand il refuse le pari
+  gameUnavailable: 'gameUnavailable'
+	text envoyé au joueur clickant sur le panneau pour parier quand un combat est en cours
+  insufficientMaterials: 'insufficientMaterials'
+	text envoyé au joueur qui pari quand il veut parier un item qu'il ne possède pas
+  Erreur:
+    etat: 'Erreur d''etat' normalement impossible, si ça arrive, redémarrer
+sign:
+  lines: les 4 lignes de text du panneau
+  - ''
+  - ''
+  - ''
+  - ''
+  BlockLoc: la position du panneau (position du block)
+    world: default
+    x: 0
+    y: 0
+    z: 0
+bet:
+  allowedItems: items disponibles pour les paris (liste éditable)
+  - DIAMOND_BLOCK items par defaulf
+  - DIAMOND_ORE
+  - EMERALD_BLOCK
+  - EMERALD_ORE
+  - GOLD_BLOCK
+  - EMERALD_ORE
+  - REDSTONE_BLOCK
+  - REDSTONE_ORE
+whiteListConfig: liste de toutes les commandes de tp innutilisable en combat
+- 'hub'	commandes par defaulf
+- 'spawn'
+- 'is go'
+- 'is h'
+  'arene sign'
+
+Les commandes :
+  prefix: /arene
+
+	/arene help/h/? : affiche la liste des commandes (commandes admin affichées uniquement pour les perm admins)
+	/arene sign : Vous tp à la position du panneau (config)
+	/arene sign [playerName] : (perm admin ou console) tp le joueur choisi devant le panneau
+	/arene cancel : le joueur qui a lancer le parie peut l'annuler avant que quelqu'un accepte le combat
+	/arene clearConfig : (uniquement via console) réinitialise la config par default

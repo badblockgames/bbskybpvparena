@@ -1,0 +1,7 @@
+name: BBSkyBPvpArena
+version: 1.0
+author: ustaN26
+main: fr.ustaN.main.SkybPvpArena
+commands:
+  arene:
+    description: toutes les commandes du plugin.
