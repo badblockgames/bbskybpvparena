@@ -25,6 +25,7 @@ import fr.ustaN.main.gui.PariGui;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Play {
+	private List<Player> players = new ArrayList<>();
 	private YMLFile configFile;
 	private Configuration config;
 	private Player playerUn, playerDeux;
@@ -90,8 +91,10 @@ public class Play {
 			this.playerUn = player;
 			if (player != null)
 				this.namePlayerUn = player.getDisplayName();
+			players.put(playerUn);
 		} else if (i == 2) {
 			this.playerDeux = player;
+			players.put(playerDeux);
 			if (player != null)
 				this.namePlayerDeux = player.getDisplayName();
 		}
@@ -108,7 +111,7 @@ public class Play {
 
 	public String getText(String txt) {
 		if (txt.contains("&"))
-			txt = txt.replace("&", "§");
+			txt = txt.replace("&", "Â§");
 		if (txt.contains("PLAYERUN"))
 			txt = txt.replace("PLAYERUN", this.namePlayerUn);
 		if (txt.contains("PLAYERDEUX"))
@@ -155,12 +158,12 @@ public class Play {
 			String[] loreListArray = lore.split("__");
 			List<String> loreList = new ArrayList<>();
 			for (String s : loreListArray) {
-				loreList.add(s.replace("&", "Â§"));
+				loreList.add(s.replace("&", "Ã‚Â§"));
 			}
 			meta.setLore(loreList);
 		}
 		if (!name.isEmpty()) {
-			meta.setDisplayName(name.replace("&", "Â§"));
+			meta.setDisplayName(name.replace("&", "Ã‚Â§"));
 		}
 		item.setItemMeta(meta);
 		SkullMeta headMeta = (SkullMeta) item.getItemMeta();
@@ -200,7 +203,10 @@ public class Play {
 		SkybPvpArena.getMain().getPariObj().rendrePari(winner_, 2);
 		SkybPvpArena.getMain().setEtatDuJeu(5);
 //TODO	this.playerUn.teleport(new Location(Bukkit.getWorld(config.getString("SpawnAreas.spawn.world")),config.getInt("SpawnAreas.spawn.x"), config.getInt("SpawnAreas.spawn.y"),config.getInt("SpawnAreas.spawn.z"),0,0));
-		this.playerDeux.teleport(new Location(Bukkit.getWorld(config.getString("SpawnAreas.spawn.world")),config.getInt("SpawnAreas.spawn.x"), config.getInt("SpawnAreas.spawn.y"),config.getInt("SpawnAreas.spawn.z"),0,0));
+		//this.playerDeux.teleport(new Location(Bukkit.getWorld(config.getString("SpawnAreas.spawn.world")),config.getInt("SpawnAreas.spawn.x"), config.getInt("SpawnAreas.spawn.y"),config.getInt("SpawnAreas.spawn.z"),0,0));
+		for(Player pls : players){pls.teleport(new Location(Bukkit.getWorld(config.getString("SpawnAreas.spawn.world")),config.getInt("SpawnAreas.spawn.x"), config.getInt("SpawnAreas.spawn.y"),config.getInt("SpawnAreas.spawn.z"),0,0)); }
+		players.remove(playerUn);
+		players.remove(playerDeux);
 		this.playerUn.setInvulnerable(false);
 		this.playerDeux.setInvulnerable(false);
 		SkybPvpArena.getMain().resetAll();
@@ -213,18 +219,18 @@ public class Play {
 			@Override
 			public void run() {
 				if (time <= 0) {
-					SkybPvpArena.getMain().getPlayObj().getPlayer(1).sendTitle("§bQue le bain de sang", "§bCOMMENCE",
+					SkybPvpArena.getMain().getPlayObj().getPlayer(1).sendTitle("Â§bQue le bain de sang", "Â§bCOMMENCE",
 							10, 15, 10);
-					SkybPvpArena.getMain().getPlayObj().getPlayer(2).sendTitle("§bQue le bain de sang", "§bCOMMENCE",
+					SkybPvpArena.getMain().getPlayObj().getPlayer(2).sendTitle("Â§bQue le bain de sang", "Â§bCOMMENCE",
 							10, 15, 10);
 					fight = true;
 					cancel();
 					return;
 				}
-				SkybPvpArena.getMain().getPlayObj().getPlayer(1).sendTitle("§bLe combat commence",
-						"§Bdans " + time + "s", 5, 10, 5);
-				SkybPvpArena.getMain().getPlayObj().getPlayer(2).sendTitle("§bLe combat commence",
-						"§Bdans " + time + "s", 5, 10, 5);
+				SkybPvpArena.getMain().getPlayObj().getPlayer(1).sendTitle("Â§bLe combat commence",
+						"Â§Bdans " + time + "s", 5, 10, 5);
+				SkybPvpArena.getMain().getPlayObj().getPlayer(2).sendTitle("Â§bLe combat commence",
+						"Â§Bdans " + time + "s", 5, 10, 5);
 				if (time == 3) {
 					SkybPvpArena.getMain().getPlayObj().getPlayer(1).removePotionEffect(PotionEffectType.BLINDNESS);
 					SkybPvpArena.getMain().getPlayObj().getPlayer(2).removePotionEffect(PotionEffectType.BLINDNESS);
